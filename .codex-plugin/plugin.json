@@ -1,0 +1,41 @@
+{
+  "name": "gateway",
+  "version": "0.1.0",
+  "description": "Install, connect to, deploy through, and diagnose a user-owned Good Gateway instance.",
+  "author": {
+    "name": "Square Labs",
+    "url": "https://thesquarelabs.com"
+  },
+  "homepage": "https://docs.goodgateway.dev/en/ai/agent-skills/",
+  "repository": "https://github.com/the-square-labs/gateway-skills",
+  "license": "MIT",
+  "keywords": [
+    "gateway",
+    "deployment",
+    "infrastructure",
+    "pages",
+    "docker",
+    "compose",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Good Gateway",
+    "shortDescription": "Deploy and operate through Gateway",
+    "longDescription": "Install or connect to a user-owned Good Gateway instance, choose its native Pages, Docker, deployment, Compose, database, and ingress workflows, follow asynchronous Tasks, and verify the resulting resource or public endpoint.",
+    "developerName": "Square Labs",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://goodgateway.dev",
+    "defaultPrompt": [
+      "Connect this project to my Good Gateway instance.",
+      "Deploy this application through Good Gateway.",
+      "Diagnose this Good Gateway resource without changing it."
+    ],
+    "brandColor": "#7467F5",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/icon.svg"
+  }
+}

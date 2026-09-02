@@ -1,0 +1,40 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  repository:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Validate manifests and skill references
+        run: python3 scripts/validate-repository.py
+
+      - name: Compile Python helpers
+        run: python3 -m py_compile scripts/validate-repository.py skills/using-gateway/scripts/pages-artifact.py
+
+      - name: Discover the published skill layout
+        run: npx -y skills add . --list -a codex -y
+
+      - name: Install the skill in isolation
+        shell: bash
+        run: |
+          install_root="$(mktemp -d)"
+          cd "$install_root"
+          npx -y skills add "$GITHUB_WORKSPACE" --skill using-gateway -a codex -y
+          test -f .agents/skills/using-gateway/SKILL.md || test -f .codex/skills/using-gateway/SKILL.md

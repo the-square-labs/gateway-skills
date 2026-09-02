@@ -1,0 +1,17 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
+  "name": "gateway-skills",
+  "description": "Agent operating knowledge for Good Gateway infrastructure and delivery workflows.",
+  "owner": {
+    "name": "Square Labs",
+    "url": "https://thesquarelabs.com"
+  },
+  "plugins": [
+    {
+      "name": "gateway",
+      "description": "Deploy and operate applications through a user-owned Good Gateway instance.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}
