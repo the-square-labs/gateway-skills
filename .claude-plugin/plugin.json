@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "gateway",
-  "version": "0.1.0",
-  "description": "Install, connect to, deploy through, and diagnose a user-owned Good Gateway instance.",
+  "version": "0.2.0",
+  "description": "Install, connect to, deploy through, operate, and diagnose a user-owned Good Gateway instance with one router skill and ten domain skills.",
   "author": {
     "name": "Square Labs",
     "url": "https://thesquarelabs.com"
@@ -17,6 +17,12 @@
     "pages",
     "docker",
     "compose",
+    "ingress",
+    "tls",
+    "pki",
+    "databases",
+    "storage",
+    "observability",
     "mcp"
   ]
 }

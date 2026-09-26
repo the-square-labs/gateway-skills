@@ -1,31 +1,51 @@
 # Install Good Gateway for your agent
 
-The repository supports two equivalent distribution paths:
+The repository supports two distribution paths:
 
-- install the canonical `using-gateway` skill with `npx skills`;
-- install the native `gateway` plugin in Claude Code or Codex.
+- install the skills with `npx skills`, either the whole set or individual skills;
+- install the native `gateway` plugin in Claude Code or Codex, which always contains every skill.
 
-Choose one path for each agent. The plugin and direct skill contain the same operating instructions.
+Choose one path for each agent. The plugin and the direct skills contain the same operating instructions. `using-gateway` is the entry point and routes to the domain skills, so install the whole set unless you have a reason to trim it.
 
 ## Universal skill installation
 
-Install in the current project and select the agents that should receive it:
+Install every Gateway skill in the current project and select the agents that should receive them:
 
 ```bash
-npx skills add the-square-labs/gateway-skills --skill using-gateway
+npx skills add the-square-labs/gateway-skills
+```
+
+The installer lists all skills in the package; keep them all selected. To skip the selection, name them explicitly:
+
+```bash
+npx skills add the-square-labs/gateway-skills --skill '*'
 ```
 
 Install for the current user across projects:
 
 ```bash
-npx skills add the-square-labs/gateway-skills --skill using-gateway -g
+npx skills add the-square-labs/gateway-skills --skill '*' -g
 ```
 
-To target specific agents non-interactively:
+Target specific agents non-interactively:
 
 ```bash
-npx skills add the-square-labs/gateway-skills --skill using-gateway -a codex -a claude-code -y
+npx skills add the-square-labs/gateway-skills --skill '*' -a codex -a claude-code -y
 ```
+
+Install only some skills by name. Include `using-gateway` whenever you trim the set, because the domain skills rely on its connection and safety rules:
+
+```bash
+npx skills add the-square-labs/gateway-skills --skill using-gateway --skill publishing-html-pages
+```
+
+List the skills without installing anything:
+
+```bash
+npx skills add the-square-labs/gateway-skills --list
+```
+
+Update installed skills later with `npx skills update`.
 
 ## Claude Code plugin
 
@@ -57,9 +77,9 @@ codex plugin remove gateway
 codex plugin add gateway@gateway-skills
 ```
 
-Start a new Claude Code or Codex session after installing or updating so the skill is loaded into the new agent context.
+Start a new Claude Code or Codex session after installing or updating so the skills are loaded into the new agent context.
 
-## Connect the installed skill to Gateway
+## Connect the installed skills to Gateway
 
 This package does not bundle a fixed MCP server because every Good Gateway installation has its own hostname and OAuth boundary.
 

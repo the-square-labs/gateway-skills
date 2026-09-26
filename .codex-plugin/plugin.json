@@ -1,7 +1,7 @@
 {
   "name": "gateway",
-  "version": "0.1.0",
-  "description": "Install, connect to, deploy through, and diagnose a user-owned Good Gateway instance.",
+  "version": "0.2.0",
+  "description": "Install, connect to, deploy through, operate, and diagnose a user-owned Good Gateway instance with one router skill and ten domain skills.",
   "author": {
     "name": "Square Labs",
     "url": "https://thesquarelabs.com"
@@ -16,13 +16,19 @@
     "pages",
     "docker",
     "compose",
+    "ingress",
+    "tls",
+    "pki",
+    "databases",
+    "storage",
+    "observability",
     "mcp"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Good Gateway",
     "shortDescription": "Deploy and operate through Gateway",
-    "longDescription": "Install or connect to a user-owned Good Gateway instance, choose its native Pages, Docker, deployment, Compose, database, and ingress workflows, follow asynchronous Tasks, and verify the resulting resource or public endpoint.",
+    "longDescription": "Install or connect to a user-owned Good Gateway instance and operate it through its native workflows: Pages publishing with shareable links, Docker Containers, blue/green Deployments, Compose Projects and Git builds, high availability, Domains, Routes and TLS, internal PKI, managed databases, object storage, Nodes, observability, and access control, following asynchronous Tasks and verifying every result.",
     "developerName": "Square Labs",
     "category": "Developer Tools",
     "capabilities": [

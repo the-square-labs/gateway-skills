@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "gateway",
-      "description": "Deploy and operate applications through a user-owned Good Gateway instance.",
+      "description": "Deploy, publish, and operate applications through a user-owned Good Gateway instance with one router skill and ten domain skills.",
       "source": "./",
       "category": "development"
     }

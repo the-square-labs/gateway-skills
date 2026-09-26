@@ -22,19 +22,34 @@ jobs:
           node-version: "24"
           package-manager-cache: false
 
-      - name: Validate manifests and skill references
+      - name: Validate manifests, skills, and links
         run: python3 scripts/validate-repository.py
 
       - name: Compile Python helpers
-        run: python3 -m py_compile scripts/validate-repository.py skills/using-gateway/scripts/pages-artifact.py
+        run: python3 -m py_compile scripts/*.py skills/*/scripts/*.py
 
       - name: Discover the published skill layout
         run: npx -y skills add . --list -a codex -y
 
-      - name: Install the skill in isolation
+      - name: Install every skill in isolation
         shell: bash
         run: |
           install_root="$(mktemp -d)"
           cd "$install_root"
-          npx -y skills add "$GITHUB_WORKSPACE" --skill using-gateway -a codex -y
-          test -f .agents/skills/using-gateway/SKILL.md || test -f .codex/skills/using-gateway/SKILL.md
+          npx -y skills add "$GITHUB_WORKSPACE" --skill '*' -a codex -y
+          for skill_dir in "$GITHUB_WORKSPACE"/skills/*/; do
+            name="$(basename "$skill_dir")"
+            test -f ".agents/skills/$name/SKILL.md" || test -f ".codex/skills/$name/SKILL.md" || {
+              echo "missing installed skill: $name"
+              exit 1
+            }
+          done
+
+      - name: Install one skill in isolation
+        shell: bash
+        run: |
+          install_root="$(mktemp -d)"
+          cd "$install_root"
+          npx -y skills add "$GITHUB_WORKSPACE" --skill publishing-html-pages -a codex -y
+          test -f .agents/skills/publishing-html-pages/SKILL.md || test -f .codex/skills/publishing-html-pages/SKILL.md
+          test ! -e .agents/skills/using-gateway && test ! -e .codex/skills/using-gateway

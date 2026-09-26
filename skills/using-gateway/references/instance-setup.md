@@ -38,8 +38,10 @@ Use the authenticated UI or guided finalization flow and the generated one-time 
 - `nginx` / Ingress: Domains, TLS, Routes, and Pages publication.
 - `docker`: Containers, Deployments, images, volumes, networks, and Compose Projects.
 - `builder`: isolated Git builds and artifact scanning. Keep it separate from unrelated workloads and control-plane credentials.
-- `databases`: managed PostgreSQL, Redis, and ClickHouse.
+- `storage`: managed PostgreSQL, Redis, ClickHouse, managed SeaweedFS object storage, and bounded backup jobs. The legacy `databases` role is database-only; use `storage` for new capacity.
 - `monitoring`: monitoring capabilities when required.
 - `relay`: outbound connectivity topology when required by the installation.
 
 Wait until Gateway reports each Node online and capability-compatible. Report control plane, onboarding, Nodes, Builds, MCP, application resource, Route, DNS, and TLS readiness separately.
+
+For later enrollment, daemon updates, service addresses, and Node repair, use the `managing-nodes` skill.

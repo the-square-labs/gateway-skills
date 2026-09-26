@@ -19,7 +19,9 @@ Follow the actual resource chain rather than stopping at the Dashboard. Examples
 - Git deployment: connector → admission → Build Worker → build → artifact → workload → health;
 - Compose: Project → revision → child builds → services → Route or Secure Link;
 - database access: database → binding → workload runtime → application connection;
-- Pages: Project → Deployment → Tag → Route → Domain/TLS.
+- Pages: Project → Deployment → preview link or Tag → Route → Domain/TLS.
+
+Once the failing boundary is known, continue with the skill that owns it (`deploying-workloads`, `ingress-and-domains`, `databases`, `storage`, `publishing-html-pages`, `managing-nodes`, or `observability` for logs, alerts, and audit evidence). The `investigate-service-outage` and `review-node-health` MCP prompts, when the client shows them, give a starting checklist.
 
 ## Classify, do not blur
 
