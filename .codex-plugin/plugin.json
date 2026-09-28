@@ -1,6 +1,6 @@
 {
   "name": "gateway",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Install, connect to, deploy through, operate, and diagnose a user-owned Good Gateway instance with one router skill and ten domain skills.",
   "author": {
     "name": "Square Labs",
